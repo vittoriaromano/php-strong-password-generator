@@ -1,3 +1,11 @@
+<?php
+    $generator_letters = "ABCDEFGHILMNOPQRSTUVZYJKW";
+    $generator_numbers ="1234567890";
+    $generator_characters = "!@£$%^&*";
+    $ciao = ($_GET['lenght']);
+    $generator = substr(str_shuffle(($generator_characters) . ($generator_letters) . ($generator_numbers) ),0,$ciao);
+    //var_dump($generator)
+ ?> 
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,21 +19,13 @@
 <body>
     <div class="p-5">
         <form action="index.php" method="GET">
-            <input type="number" id="lenght" name="lenght" >
-            <button type="button">GENERA PASSWORD</button>
-            <?php
-                $generator_letters = "ABCDEFGHILMNOPQRSTUVZYJKW";
-                $generator_numbers ="1234567890";
-                $generator_characters = "!@£$%^&*";
-                var_dump($GET['lenght']);
-                $ciao = '30';
-                $generator = substr(str_shuffle(($generator_characters) . ($generator_letters) . ($generator_numbers) ),0,$ciao);
-                //var_dump($generator)
-        ?> 
+            <label for="lenght"></label>
+            <input type="number" id="lenght" name="lenght">
+            <button type="button">GENERA PASSWORD</button> 
         </form>
-        
-
-       <p>password:<?php echo $generator;?> </p> 
+       <?php if(!empty($_GET)){
+         echo $generator;
+        }?> 
     </div> 
   
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script> 
